@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Меню</h1>
+    {% for menu in menus %}
+        <h2>{{ menu.name }}</h2>
+        <ul>
+            {% for item in menu.items.all %}
+                <li>
+                    {{ item.name }} - {{ item.price }} - {{ item.description }}
+                </li>
+            {% empty %}
+                <li>Нет пунктов меню</li>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <p>Меню не найдено</p>
+    {% endfor %}
+</body>
+</html>
